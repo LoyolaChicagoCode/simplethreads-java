@@ -1,0 +1,44 @@
+apply plugin: 'java'
+
+tasks.withType(Compile) { 
+    options.compilerArgs << "-deprecation" << "-Xlint:overrides" << "-Xlint:unchecked" 
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+task runSimple(dependsOn: 'classes', type: JavaExec) {
+    main = 'simplethreads.SimpleThread'
+    classpath = sourceSets.main.runtimeClasspath
+    args = []
+}
+
+task runRace(dependsOn: 'classes', type: JavaExec) {
+    main = 'simplethreads.RaceCondition'
+    classpath = sourceSets.main.runtimeClasspath
+    args = []
+}
+
+task runMultipleSeq(dependsOn: 'classes', type: JavaExec) {
+    main = 'simplethreads.MultipleThreads'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['-1']
+}
+
+task runMultiple(dependsOn: 'classes', type: JavaExec) {
+    main = 'simplethreads.MultipleThreads'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['0']
+}
+
+task runMultipleInterleaved(dependsOn: 'classes', type: JavaExec) {
+    main = 'simplethreads.MultipleThreads'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['1']
+}
+

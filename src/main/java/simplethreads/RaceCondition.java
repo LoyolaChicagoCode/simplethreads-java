@@ -14,10 +14,10 @@ public class RaceCondition {
 
   static Shared shared = new Shared();
 
-  public static void main(String[] args) throws InterruptedException {
+  public static void main(final String[] args) throws InterruptedException {
     while (true) {
-      Thread t1 = new Thread(new AccessShared());
-      Thread t2 = new Thread(new AccessShared());
+      final Thread t1 = new Thread(new AccessShared());
+      final Thread t2 = new Thread(new AccessShared());
       shared.reset();
       t1.start();
       t2.start();
@@ -51,7 +51,7 @@ class Shared {
 
   public /*synchronized*/ void inc() {
     try {
-      int local = value;
+      final int local = value;
       if (false)
         Thread.sleep(0);
       Thread.yield();
@@ -64,7 +64,7 @@ class Shared {
 
   public /*synchronized*/ void inc2() {
     try {
-      int local = value;
+      final int local = value;
       if (false)
         Thread.sleep(0);
       Thread.yield();

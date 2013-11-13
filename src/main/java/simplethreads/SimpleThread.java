@@ -2,12 +2,12 @@ package simplethreads;
 
 public class SimpleThread {
 
-  public static void main(String[] args) throws java.io.IOException {
+  public static void main(final String[] args) throws java.io.IOException {
 
     // create a sample thread
 
     final Thread x = new Thread(new Runnable() {
-      public void run() {
+      @Override public void run() {
         while (! Thread.interrupted()) {
           for (long i = 0; i < 1000000; i ++) {
             new Object();
