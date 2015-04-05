@@ -2,7 +2,9 @@ package simplethreads;
 
 public class MultipleThreads {
   public static void main(final String[] args) throws Exception {
-    final int sleepTime = Integer.parseInt(args[0]);
+    int temp = (args == null || args.length == 0) ? 0 : Integer.parseInt(args[0]);
+    final int sleepTime = temp;
+    System.out.println("sleepTime = " + sleepTime);
     if (sleepTime < 0) {
       // run sequentially
       new Printer("baz", 15, 1).run();
